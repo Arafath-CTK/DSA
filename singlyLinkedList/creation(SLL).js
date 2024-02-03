@@ -25,7 +25,7 @@ class LinkedList {
     this.length++;
   }
 
-  printlist() {
+  printlist() { // also example for traversing
     let currentNode = this.head;
     while (currentNode !== null) {
       console.log(currentNode.data);
