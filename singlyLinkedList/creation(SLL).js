@@ -11,7 +11,7 @@ class LinkedList {
     this.length = 0;
   }
 
-  add(data) {
+  append(data) {
     const newNode = new Node(data);
     if (this.head === null) {
       this.head = newNode;
@@ -25,7 +25,33 @@ class LinkedList {
     this.length++;
   }
 
-  printlist() { // also example for traversing
+  prepend(newNode) {
+    newNode.next = this.head;
+    this.head = newNode;
+  }
+
+  insertAtIndex(data, index) {
+    if (index === 0) {
+      this.prepend(newNode);
+    } else {
+      let newNode = new Node(data);
+      let current = this.head;
+      let count = 0;
+      while (current && count < index - 1) {
+        current = current.next;
+        count++;
+      }
+      if (current) {
+        newNode.next = current.next;
+        current.next = newNode;
+      } else {
+        console.error("Index out of bound");
+      }
+    }
+  }
+
+  printlist() {
+    // also example for traversing
     let currentNode = this.head;
     while (currentNode !== null) {
       console.log(currentNode.data);
@@ -37,7 +63,9 @@ class LinkedList {
 // Example Usage
 const myList = new LinkedList();
 myList.add(10);
-myList.add(30);
 myList.add(20);
+myList.add(30);
+// myList.printlist();
 
+myList.insertAtIndex(15, 0);
 myList.printlist();
