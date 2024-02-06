@@ -11,6 +11,11 @@ class LinkedList {
     this.length = 0;
   }
 
+  prepend(newNode) {
+    newNode.next = this.head;
+    this.head = newNode;
+  }
+
   append(data) {
     const newNode = new Node(data);
     if (this.head === null) {
@@ -23,11 +28,6 @@ class LinkedList {
       currentNode.next = newNode;
     }
     this.length++;
-  }
-
-  prepend(newNode) {
-    newNode.next = this.head;
-    this.head = newNode;
   }
 
   insertAtIndex(data, index) {
